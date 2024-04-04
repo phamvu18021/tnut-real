@@ -104,7 +104,7 @@ export const Home = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!isOpen && onOpen) onOpen();
-    }, 6000);
+    }, 8000);
 
     return () => window.clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps

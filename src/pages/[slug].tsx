@@ -4,7 +4,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import { Post } from "@/features/post";
 import { LayoutPost } from "@/layouts/layoutPost";
 import { GetServerSideProps } from "next";
-import { ReactElement } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import { fetchAuth } from "@/ultil/fetchAuth";
 import { fetchSeo } from "@/ultil/seo";
 import Head from "next/head";
@@ -33,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
       props: { post: post || null, head: head.head }
     };
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return {
       props: { post: null, head: null }
     };
@@ -47,6 +47,7 @@ interface IPostPage {
 
 const Page = (props: IPostPage) => {
   const { post, head } = props;
+
   return (
     <>
       {head && (

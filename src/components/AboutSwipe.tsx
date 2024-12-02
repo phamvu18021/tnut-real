@@ -11,6 +11,7 @@ export const CardAboutSwipe = ({ image }: { image: string }) => {
   return (
     <Box>
       <Image
+        loading="lazy"
         alt="image"
         className="Image"
         src={image}
@@ -62,38 +63,7 @@ const SwiperContainer = styled.div`
 }
 }`;
 
-export const AboutSwipe = () => {
-  const AboutImg = [
-    {
-      title: "Ảnh giới thiệu 1",
-      avt: `/about1.webp`
-    },
-    {
-      title: "Ảnh giới thiệu 2",
-      avt: `/about2.webp`
-    },
-
-    {
-      title: "Ảnh giới thiệu 3",
-      avt: `/about3.webp`
-    },
-
-    {
-      title: "Ảnh giới thiệu 4",
-      avt: `/about4.webp`
-    },
-
-    {
-      title: "Ảnh giới thiệu 5",
-      avt: `/about5.webp`
-    },
-
-    {
-      title: "Ảnh giới thiệu 6",
-      avt: `/about6.webp`
-    }
-  ];
-
+export const AboutSwipe = ({ listImage }: { listImage: any }) => {
   return (
     <SwiperContainer>
       <Swiper
@@ -108,7 +78,7 @@ export const AboutSwipe = () => {
         className="mySwiper"
         navigation={true}
       >
-        {AboutImg?.map((Aimg, index) => (
+        {listImage?.map((Aimg: any, index: number) => (
           <SwiperSlide key={index} className="swiperSlide">
             <CardAboutSwipe image={Aimg.avt} />
           </SwiperSlide>

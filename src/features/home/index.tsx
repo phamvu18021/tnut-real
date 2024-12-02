@@ -2,8 +2,10 @@
 
 import { Loading } from "@/components/Loading";
 import { useModal } from "@/components/ModalContext";
+import { Box } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
+import { useInView } from "react-intersection-observer";
 
 const Banner = dynamic(() => import("./Banner").then((mod) => mod.Banner), {
   loading: () => <Loading />
@@ -48,78 +50,62 @@ const Circulars = dynamic(
     loading: () => <Loading />
   }
 );
-const LastestPost = dynamic(
-  () => import("./LastestPost").then((mod) => mod.LastestPost),
-  {
-    loading: () => <Loading />
-  }
-);
 
 export const Home = () => {
   const { isOpen, onOpen } = useModal();
-
-  const [news, setNews] = useState<any[]>([]);
-  const [notifis, setNotifis] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
+  const [home_content, setHomeContent] = useState<any>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const { ref, inView } = useInView({
+    threshold: 0.5 // Kích hoạt khi 50% của phần tử hiển thị trong viewport
+  });
   useEffect(() => {
-    const getPosts = async () => {
-      setIsLoading(true);
+    const getHomeContent = async () => {
       try {
-        const res = await fetch(`/api/posts/?type=news&page=1`, {
+        const res = await fetch(`/api/content-page/?type=trang-chu`, {
           next: { revalidate: 3 }
         });
-
-        const data: { posts: any[]; totalPosts: string } = await res.json();
-        const { posts } = data;
-        posts?.length && setNews([posts[0], posts[1], posts[2], posts[4]]);
+        const data = await res.json();
+        setHomeContent(data?.posts[0]);
       } catch (error) {
         console.log(error);
       }
-      setIsLoading(false);
     };
-
-    getPosts();
+    getHomeContent();
   }, []);
 
-  useEffect(() => {
-    const getPosts = async () => {
-      setIsLoading(true);
-      try {
-        const res = await fetch(`/api/posts/?type=notifis&page=1`, {
-          next: { revalidate: 3 }
-        });
-
-        const data: { posts: any[]; totalPosts: string } = await res.json();
-        const { posts } = data;
-        posts?.length && setNotifis([posts[0], posts[1], posts[2], posts[4]]);
-      } catch (error) {
-        console.log(error);
-      }
-      setIsLoading(false);
-    };
-
-    getPosts();
-  }, []);
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (!isOpen && onOpen) onOpen();
-    }, 4000);
+    }, 2000);
 
     return () => window.clearTimeout(timeout);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    // Kiểm tra xem trongView và isVisible đều là true
+    if (inView && !isVisible) {
+      setIsVisible(true); // Nếu không thì hiển thị
+    }
+  }, [inView, isVisible]);
   return (
     <>
-      <Banner />
-      <Introduce />
-      <Benefit />
-      <Slogan />
-      <Majors />
-      <Testimonials />
-      <Advertisement />
-      <Event news={news} notifis={notifis} />
-      <Circulars />
+      <Banner imagesBanner={home_content?.acf?.anh_banner} />
+      <Introduce introduce={home_content?.acf?.gioi_thieu} />
+      <Box ref={ref}>
+        {isVisible && (
+          <>
+            <Benefit benefit={home_content?.acf?.loi_ich} />
+            <Slogan slogan={home_content?.acf?.slogan} />
+            <Majors majors={home_content?.acf?.nganh_dao_tao} />
+            <Testimonials
+              testimonials={home_content?.acf?.danh_gia_cua_hoc_vien}
+            />
+            <Advertisement advertisement={home_content?.acf?.quang_cao} />
+            <Event />
+            <Circulars circulars={home_content?.acf?.thong_tu} />
+          </>
+        )}
+      </Box>
     </>
   );
 };

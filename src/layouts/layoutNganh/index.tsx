@@ -1,5 +1,6 @@
 "use client";
 
+import { BenefitNganh } from "@/components/BenefitNganh";
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import {
   Box,
@@ -17,19 +18,22 @@ export const LayoutNganh = ({
   children,
   title,
   image,
-  path
+  path,
+  major_benefit
 }: {
   children?: ReactNode;
   title?: string;
   image?: string;
   path?: string;
+  major_benefit?: any;
 }) => {
   return (
     <>
       <Box
-        bg={"rgba(0, 0, 0, 0.5)"}
+        bg={"rgba(0, 0, 0, 0)"}
         bgImage={image}
         backgroundBlendMode={"overlay"}
+        backgroundPosition={"40%  50%"}
       >
         <Container maxW={"7xl"} py="52px" color={"white"}>
           <HStack pt={16} color={"gray.50"}>
@@ -95,6 +99,9 @@ export const LayoutNganh = ({
         <Container maxW={"7xl"} py={{ base: 20, lg: 36 }}>
           {children}
         </Container>
+      </Box>
+      <Box margin={"0 auto"} bg={"gray.50"}>
+        <BenefitNganh major_benefit={major_benefit} />
       </Box>
     </>
   );

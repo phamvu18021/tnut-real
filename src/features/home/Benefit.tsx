@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionTop } from "@/components/MotionTop";
 import {
   As,
   Box,
@@ -65,38 +66,56 @@ export const Item = ({
   );
 };
 
-export const benefits = [
-  {
-    path: "#",
-    title: "Thời gian Đào tạo ngắn",
-    desc: `• Người học có thể học vượt để rút ngắn thời gian học tập theo quy định đào tạo tín chỉ `,
-    descs: `• Thời gian đào tạo từ 2-4,5 năm `,
-    icon: BsClockHistory
-  },
-  {
-    path: "#",
-    title: "Bằng Đại học uy tín ",
-    desc: ` • Bằng không ghi hình thức đào tạo và được Bộ GD&ĐT công nhận `,
-    descs: `• Có giá trị sử dụng trọn đời`,
-    icon: PiCertificate
-  },
-  {
-    path: "#",
-    title: "Tư vấn 24/7",
-    desc: `• Tư vấn lộ trình học miễn phí`,
-    descs: `• Hỗ trợ học tập và kỹ thuật nhanh chóng - tận tình`,
-    icon: RiCustomerService2Line
-  },
-  {
-    path: "#",
-    title: "Kho học liệu đa dạng  ",
-    desc: `•Tài liệu học tập đa Phương tiện (video, slide, script,..) `,
-    descs: `• Giáo trình do giảng viên đang trực tiếp công tác tại trường biên soạn.`,
-    icon: MdOutlineWorkHistory
-  }
-];
-
-export const Benefit = () => {
+export const Benefit = (benefit: any) => {
+  const benefits = [
+    {
+      path: "#",
+      title:
+        benefit?.benefit?.loi_ich_1.loi_ich_title || ".Thời gian Đào tạo ngắn",
+      desc:
+        benefit?.benefit?.loi_ich_1.loi_ich_desc ||
+        "• .Người học có thể học vượt để rút ngắn thời gian học tập theo quy định đào tạo tín chỉ ",
+      descs:
+        benefit?.benefit?.loi_ich_1.loi_ich_descs ||
+        "• .Thời gian đào tạo từ 2-4,5 năm ",
+      icon: BsClockHistory
+    },
+    {
+      path: "#",
+      title:
+        benefit?.benefit?.loi_ich_2.loi_ich_title || ".Bằng Đại học uy tín ",
+      desc:
+        benefit?.benefit?.loi_ich_2.loi_ich_desc ||
+        "• .Bằng không ghi hình thức đào tạo và được Bộ GD&ĐT công nhận ",
+      descs:
+        benefit?.benefit?.loi_ich_2.loi_ich_descs ||
+        "• .Có giá trị sử dụng trọn đời",
+      icon: PiCertificate
+    },
+    {
+      path: "#",
+      title: benefit?.benefit?.loi_ich_3.loi_ich_title || ".Tư vấn 24/7",
+      desc:
+        benefit?.benefit?.loi_ich_3.loi_ich_desc ||
+        "• .Tư vấn lộ trình học miễn phí",
+      descs:
+        benefit?.benefit?.loi_ich_3.loi_ich_descs ||
+        "• .Hỗ trợ học tập và kỹ thuật nhanh chóng - tận tình",
+      icon: RiCustomerService2Line
+    },
+    {
+      path: "#",
+      title:
+        benefit?.benefit?.loi_ich_4.loi_ich_title || ".Kho học liệu đa dạng",
+      desc:
+        benefit?.benefit?.loi_ich_4.loi_ich_desc ||
+        "• .Tài liệu học tập đa Phương tiện (video, slide, script,..) ",
+      descs:
+        benefit?.benefit?.loi_ich_4.loi_ich_descs ||
+        "• .Giáo trình do giảng viên đang trực tiếp công tác tại trường biên soạn.",
+      icon: MdOutlineWorkHistory
+    }
+  ];
   return (
     <Box bg={"gray.50"} py={"60px"} pb={"80px"}>
       <Container maxW="7xl">
@@ -106,14 +125,15 @@ export const Benefit = () => {
           spacing={{ base: 2, lg: 6 }}
         >
           {benefits.map((categoty, index) => (
-            <Item
-              key={index}
-              path={categoty.path}
-              title={categoty.title}
-              desc={categoty.desc}
-              descs={categoty.descs}
-              icon={categoty.icon}
-            />
+            <MotionTop key={index}>
+              <Item
+                path={categoty.path}
+                title={categoty.title}
+                desc={categoty.desc}
+                descs={categoty.descs}
+                icon={categoty.icon}
+              />
+            </MotionTop>
           ))}
         </SimpleGrid>
       </Container>

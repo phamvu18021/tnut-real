@@ -73,14 +73,14 @@ export const Home = () => {
     getHomeContent();
   }, []);
 
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!isOpen && onOpen) onOpen();
-    }, 2000);
+  // useEffect(() => {
+  //   const timeout = setTimeout(() => {
+  //     if (!isOpen && onOpen) onOpen();
+  //   }, 2000);
 
-    return () => window.clearTimeout(timeout);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  //   return () => window.clearTimeout(timeout);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
   useEffect(() => {
     // Kiểm tra xem trongView và isVisible đều là true
     if (inView && !isVisible) {

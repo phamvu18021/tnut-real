@@ -7,10 +7,10 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 export const CardBanner = ({ image }: { image: string }) => {
-  const { isOpen, onOpen, onClose } = useModal();
+  const { isOpen, onOpen } = useModal();
 
   return (
     <Box>
@@ -138,7 +138,7 @@ export const Banner = (imagesBanner: any) => {
         spaceBetween={30}
         effect={"fade"}
         loop={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        modules={[Pagination, Navigation]}
         className="mySwiper"
         navigation={true}
       >

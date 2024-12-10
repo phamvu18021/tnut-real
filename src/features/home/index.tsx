@@ -6,20 +6,12 @@ import { Box } from "@chakra-ui/react";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { Banner } from "./Banner";
+import { Introduce } from "./Introduce";
 
-const Banner = dynamic(() => import("./Banner").then((mod) => mod.Banner), {
-  loading: () => <Loading />
-});
 const Event = dynamic(() => import("./Event").then((mod) => mod.Event), {
   loading: () => <Loading />
 });
-
-const Introduce = dynamic(
-  () => import("./Introduce").then((mod) => mod.Introduce),
-  {
-    loading: () => <Loading />
-  }
-);
 
 const Benefit = dynamic(() => import("./Benefit").then((mod) => mod.Benefit), {
   loading: () => <Loading />
@@ -56,13 +48,13 @@ export const Home = () => {
   const [home_content, setHomeContent] = useState<any>(null);
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({
-    threshold: 0.5 // Kích hoạt khi 50% của phần tử hiển thị trong viewport
+    threshold: 0.1 // Kích hoạt khi 50% của phần tử hiển thị trong viewport
   });
   useEffect(() => {
     const getHomeContent = async () => {
       try {
         const res = await fetch(`/api/content-page/?type=trang-chu`, {
-          next: { revalidate: 3 }
+          next: { revalidate: 3600 }
         });
         const data = await res.json();
         setHomeContent(data?.posts[0]);

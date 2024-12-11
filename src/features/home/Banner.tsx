@@ -31,7 +31,7 @@ export const CardBanner = ({ image }: { image: string }) => {
         layout="responsive"
         width={1950}
         height={800}
-        sizes="(max-width: 768px) 60vw, (max-width: 1200px) 80vw, 100vw"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
         style={{ width: "100%", height: "auto", objectFit: "contain" }}
       />
 

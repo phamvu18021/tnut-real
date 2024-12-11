@@ -14,7 +14,7 @@ export const CardBanner = ({ image }: { image: string }) => {
 
   return (
     <Box>
-      <Image
+      {/* <Image
         priority
         alt="image"
         className="Image"
@@ -23,20 +23,17 @@ export const CardBanner = ({ image }: { image: string }) => {
         height={800}
         sizes="100vw"
         style={{ width: "100%", height: "auto", objectFit: "contain" }}
-      />
-
-      {/* <Image
-        priority // Chỉ sử dụng khi ảnh là phần của LCP
-        alt="Optimized Image"
+      /> */}
+      <Image
+        priority
+        alt="image"
         src={image}
         layout="responsive"
-        width={1950} // Tỷ lệ khung hình
+        width={1950}
         height={800}
-        sizes="(max-width: 1200px) 50vw, 100vw"
-        style={{
-          objectFit: "cover" // Đảm bảo ảnh phủ đầy không gian
-        }}
-      /> */}
+        sizes="(max-width: 768px) 60vw, (max-width: 1200px) 80vw, 100vw"
+        style={{ width: "100%", height: "auto", objectFit: "contain" }}
+      />
 
       <BtnTheme
         position={"absolute"}

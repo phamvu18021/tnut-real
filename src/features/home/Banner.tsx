@@ -4,17 +4,17 @@ import { Box } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 import "swiper/css";
-import "swiper/css/effect-fade";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css/effect-fade";
+import { EffectFade, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 export const CardBanner = ({ image }: { image: string }) => {
   const { isOpen, onOpen } = useModal();
 
   return (
     <Box>
-      {/* <Image
+      <Image
         priority
         alt="image"
         className="Image"
@@ -23,9 +23,9 @@ export const CardBanner = ({ image }: { image: string }) => {
         height={800}
         sizes="100vw"
         style={{ width: "100%", height: "auto", objectFit: "contain" }}
-      /> */}
+      />
 
-      <Image
+      {/* <Image
         priority // Chỉ sử dụng khi ảnh là phần của LCP
         alt="Optimized Image"
         src={image}
@@ -36,7 +36,7 @@ export const CardBanner = ({ image }: { image: string }) => {
         style={{
           objectFit: "cover" // Đảm bảo ảnh phủ đầy không gian
         }}
-      />
+      /> */}
 
       <BtnTheme
         position={"absolute"}
@@ -115,25 +115,25 @@ export const Banner = (imagesBanner: any) => {
     {
       title:
         "Với hệ đào tạo từ xa tnut, chương trình học được thiết kế theo quy chuẩn của Bộ GD&ĐT, đảm bảo cho học viên đầy đủ kiến thức chuyên môn và kinh nghiệm thực hành thực tế, thỏa sức theo đuổi đam mê.",
-      avt: imagesBanner?.imagesBanner?.anh_banner_2 || `/banner-tnut1.webp`,
+      avt: imagesBanner?.imagesBanner?.anh_banner_2 || `/main.webp`,
       desc: `CÁC NGÀNH ĐÀO TẠO "HOT"`
     },
     {
       title:
         "Với hệ đào tạo từ xa tnut, chương trình học được thiết kế theo quy chuẩn của Bộ GD&ĐT, đảm bảo cho học viên đầy đủ kiến thức chuyên môn và kinh nghiệm thực hành thực tế, thỏa sức theo đuổi đam mê.",
-      avt: imagesBanner?.imagesBanner?.anh_banner_3 || `/banner-tnut1.webp`,
+      avt: imagesBanner?.imagesBanner?.anh_banner_3 || `/main.webp`,
       desc: `CÁC NGÀNH ĐÀO TẠO "HOT"`
     },
     {
       title:
         "Với hệ đào tạo từ xa tnut, chương trình học được thiết kế theo quy chuẩn của Bộ GD&ĐT, đảm bảo cho học viên đầy đủ kiến thức chuyên môn và kinh nghiệm thực hành thực tế, thỏa sức theo đuổi đam mê.",
-      avt: imagesBanner?.imagesBanner?.anh_banner_4 || `/banner-tnut1.webp`,
+      avt: imagesBanner?.imagesBanner?.anh_banner_4 || `/main.webp`,
       desc: `CÁC NGÀNH ĐÀO TẠO "HOT"`
     },
     {
       title:
         "Với hệ đào tạo từ xa tnut, chương trình học được thiết kế theo quy chuẩn của Bộ GD&ĐT, đảm bảo cho học viên đầy đủ kiến thức chuyên môn và kinh nghiệm thực hành thực tế, thỏa sức theo đuổi đam mê.",
-      avt: imagesBanner?.imagesBanner?.anh_banner_5 || `/banner-tnut1.webp`,
+      avt: imagesBanner?.imagesBanner?.anh_banner_5 || `/main.webp`,
       desc: `CÁC NGÀNH ĐÀO TẠO "HOT"`
     }
   ];
@@ -151,7 +151,7 @@ export const Banner = (imagesBanner: any) => {
         spaceBetween={30}
         effect={"fade"}
         loop={true}
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, EffectFade]}
         className="mySwiper"
         navigation={true}
       >

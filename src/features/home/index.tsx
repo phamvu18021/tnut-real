@@ -43,27 +43,27 @@ const Circulars = dynamic(
   }
 );
 
-export const Home = () => {
+export const Home = ({ home_content }: { home_content: any }) => {
   const { isOpen, onOpen } = useModal();
-  const [home_content, setHomeContent] = useState<any>(null);
+  // const [home_content, setHomeContent] = useState<any>(null);
   const [isVisible, setIsVisible] = useState(false);
   const { ref, inView } = useInView({
     threshold: 0.1 // Kích hoạt khi 50% của phần tử hiển thị trong viewport
   });
-  useEffect(() => {
-    const getHomeContent = async () => {
-      try {
-        const res = await fetch(`/api/content-page/?type=trang-chu`, {
-          next: { revalidate: 3600 }
-        });
-        const data = await res.json();
-        setHomeContent(data?.posts[0]);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getHomeContent();
-  }, []);
+  // useEffect(() => {
+  //   const getHomeContent = async () => {
+  //     try {
+  //       const res = await fetch(`/api/content-page/?type=trang-chu`, {
+  //         next: { revalidate: 3600 }
+  //       });
+  //       const data = await res.json();
+  //       setHomeContent(data?.posts[0]);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   getHomeContent();
+  // }, []);
 
   // useEffect(() => {
   //   const timeout = setTimeout(() => {

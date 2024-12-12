@@ -20,7 +20,7 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
     return {
       props: {
         head: head.head,
-        cms: data?.posts[0]
+        cms: data?.posts[0] || {}
       }
     };
   } catch (error) {

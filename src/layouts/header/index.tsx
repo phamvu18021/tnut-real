@@ -151,14 +151,13 @@ export const Header = () => {
                 height={50}
                 // style={{ borderRadius: "50%" }}
                 src={`/logo-tnut.webp`}
-                alt="logo Trường Đại học Kỹ thuật Công nghiệp 
-        "
+                alt="logo Trường Đại học Kỹ thuật Công nghiệp"
               />
             </Link>
           </Box>
 
           <ModalBase isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-            <FormMain />
+            {isOpen && <FormMain />}
           </ModalBase>
         </Container>
       </Box>

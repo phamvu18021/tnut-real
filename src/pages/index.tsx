@@ -41,7 +41,7 @@ const Page = (props: any) => {
           <Head>{ReactHtmlParser(replaceSeoRM(props.head))}</Head>
         </div>
       )}
-      {props.cms && <Home home_content={props.cms} />}
+      <Home home_content={props.cms} />
     </>
   );
 };

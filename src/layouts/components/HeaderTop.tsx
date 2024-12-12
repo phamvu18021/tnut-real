@@ -66,7 +66,7 @@ export const HeaderTop = () => {
         onClose={() => onClose && onClose()}
         onOpen={() => onOpen && onOpen()}
       >
-        <FormMain />
+        {onToggle && <FormMain />}
       </ModalBase>
     </>
   );

@@ -119,15 +119,29 @@ export const BtnEmail = ({
   label?: string;
 }) => {
   const [formOpen, setFormOpen] = useState(false);
+
+  const handleOpenForm = () => {
+    setFormOpen(true);
+  };
+
+  const handleCloseForm = () => {
+    setFormOpen(false);
+  };
+
   return (
-    <Popover placement="left" trigger="hover">
+    <Popover
+      placement="left"
+      trigger="hover" // Chỉ mở Popover khi gọi handleOpenForm
+      isOpen={formOpen} // Kiểm soát trạng thái Popover
+      onClose={handleCloseForm} // Đóng Popover khi nhấn ra ngoài
+    >
       <PopoverTrigger>
         <HStack
           spacing={0}
           borderRadius={0}
           bg={"orange.500"}
           transform={"rotate(270deg)"}
-          onMouseEnter={() => setFormOpen(true)}
+          onClick={handleOpenForm} // Mở Popover khi nhấn
         >
           <IconButton
             icon={<MdEmail />}
@@ -143,9 +157,12 @@ export const BtnEmail = ({
           </Text>
         </HStack>
       </PopoverTrigger>
-      <PopoverContent>
+      <PopoverContent
+        onMouseDown={(e) => e.stopPropagation()} // Ngăn sự kiện chuột lan ra ngoài
+        onFocus={(e) => e.stopPropagation()} // Ngăn sự kiện focus gây đóng form
+      >
         <PopoverArrow />
-        <PopoverCloseButton />
+        <PopoverCloseButton onClick={handleCloseForm} />
         <PopoverHeader as={Heading} size={"md"} textAlign={"center"}>
           Để lại thông tin
         </PopoverHeader>

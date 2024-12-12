@@ -34,26 +34,7 @@ export const Tags = ({
 };
 
 export const HeaderTop = () => {
-  const [id, setId] = useState("");
-  const [href, setHref] = useState("");
-
   const { onOpen, onClose, isOpen, onToggle } = useModal();
-
-  useEffect(() => {
-    const getForm = async () => {
-      try {
-        const res = await fetch(`/api/data-form/?type=form-main`);
-        const data = await res.json();
-        const id = data?.id || "";
-        id && setId(id);
-        const href = data?.href || "";
-        href && setHref(href);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getForm();
-  }, [id, href, isOpen]);
   return (
     <>
       <HStack align={"center"} justify={"space-between"} py={2}>

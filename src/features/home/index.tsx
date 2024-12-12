@@ -83,8 +83,8 @@ export const Home = () =>
     }, [inView, isVisible]);
     return (
       <>
-        <Banner imagesBanner={home_content?.acf?.anh_banner || {}} />
-        <Introduce introduce={home_content?.acf?.gioi_thieu || {}} />
+        <Banner imagesBanner={home_content?.acf?.anh_banner} />
+        <Introduce introduce={home_content?.acf?.gioi_thieu} />
         <Box ref={ref}>
           {isVisible && (
             <>

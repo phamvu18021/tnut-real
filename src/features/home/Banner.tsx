@@ -14,7 +14,7 @@ export const CardBanner = ({ image }: { image: string }) => {
 
   return (
     <Box>
-      {/* <Image
+      <Image
         priority
         alt="image"
         className="Image"
@@ -23,8 +23,8 @@ export const CardBanner = ({ image }: { image: string }) => {
         height={800}
         sizes="100vw"
         style={{ width: "100%", height: "auto", objectFit: "contain" }}
-      /> */}
-      <Image
+      />
+      {/* <Image
         priority
         alt="image"
         src={image}
@@ -33,7 +33,7 @@ export const CardBanner = ({ image }: { image: string }) => {
         height={800}
         sizes="100vw"
         style={{ width: "100%", height: "auto", objectFit: "contain" }}
-      />
+      /> */}
 
       <BtnTheme
         position={"absolute"}

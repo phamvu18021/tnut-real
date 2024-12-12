@@ -146,9 +146,9 @@ export const BtnEmail = ({
         <PopoverHeader as={Heading} size={"md"} textAlign={"center"}>
           Để lại thông tin
         </PopoverHeader>
-        {/* <PopoverBody>
+        <PopoverBody>
           <FormMain />
-        </PopoverBody> */}
+        </PopoverBody>
       </PopoverContent>
     </Popover>
   );

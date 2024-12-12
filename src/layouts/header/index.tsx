@@ -157,7 +157,7 @@ export const Header = () => {
           </Box>
 
           <ModalBase isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-            {isOpen && <FormMain />}
+            <FormMain />
           </ModalBase>
         </Container>
       </Box>

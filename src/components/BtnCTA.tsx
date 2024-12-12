@@ -20,6 +20,7 @@ import { BsMessenger } from "react-icons/bs";
 import { MdEmail, MdOutlineMail } from "react-icons/md";
 import { SiZalo } from "react-icons/si";
 import { FormMain } from "./FormContact";
+import { useState } from "react";
 
 export const BtnPhone = ({
   link,
@@ -117,6 +118,7 @@ export const BtnEmail = ({
   link?: string;
   label?: string;
 }) => {
+  const [formOpen, setFormOpen] = useState(false);
   return (
     <Popover placement="left" trigger="hover">
       <PopoverTrigger>
@@ -125,6 +127,7 @@ export const BtnEmail = ({
           borderRadius={0}
           bg={"orange.500"}
           transform={"rotate(270deg)"}
+          onMouseEnter={() => setFormOpen(true)}
         >
           <IconButton
             icon={<MdEmail />}
@@ -146,9 +149,7 @@ export const BtnEmail = ({
         <PopoverHeader as={Heading} size={"md"} textAlign={"center"}>
           Để lại thông tin
         </PopoverHeader>
-        <PopoverBody>
-          <FormMain />
-        </PopoverBody>
+        <PopoverBody>{formOpen && <FormMain />}</PopoverBody>
       </PopoverContent>
     </Popover>
   );

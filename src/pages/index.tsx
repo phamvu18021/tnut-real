@@ -12,23 +12,23 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
   try {
     const res = (await fetchSeo({ url: api_url, revalidate: 3600 })) || "";
     const head = (await res.json()) || "";
-    // const resCMS =
-    //   (await fetch(`${base_url}/api/content-page/?type=trang-chu`, {
-    //     next: { revalidate: 3600 }
-    //   })) || "";
-    // const data = (await resCMS.json()) || "";
+    const resCMS =
+      (await fetch(`${base_url}/api/content-page/?type=trang-chu`, {
+        next: { revalidate: 3600 }
+      })) || "";
+    const data = (await resCMS.json()) || "";
     return {
       props: {
-        head: head.head
-        // cms: data?.posts[0] || {}
+        head: head.head,
+        cms: data?.posts[0] || {}
       }
     };
   } catch (error) {
     console.error("Error in fetching seo", error);
     return {
       props: {
-        head: null
-        // cms: null
+        head: null,
+        cms: null
       }
     };
   }
@@ -41,8 +41,8 @@ const Page = (props: any) => {
           <Head>{ReactHtmlParser(replaceSeoRM(props.head))}</Head>
         </div>
       )}
-      {/* <Home home_content={props.cms} /> */}
-      <Home />
+      <Home home_content={props.cms} />
+      {/* <Home /> */}
     </>
   );
 };

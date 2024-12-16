@@ -20,7 +20,6 @@ import { BsMessenger } from "react-icons/bs";
 import { MdEmail, MdOutlineMail } from "react-icons/md";
 import { SiZalo } from "react-icons/si";
 import { FormMain } from "./FormContact";
-import { useState } from "react";
 
 export const BtnPhone = ({
   link,
@@ -189,6 +188,8 @@ export const BtnEmail = ({
           borderRadius={0}
           bg={"orange.500"}
           transform={"rotate(270deg)"}
+          cursor={"pointer"}
+          aria-label="email"
         >
           <IconButton
             icon={<MdEmail />}

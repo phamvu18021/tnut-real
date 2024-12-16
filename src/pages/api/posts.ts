@@ -38,7 +38,7 @@ export default async function handler(
 
     //get posts category==='tin-tuc'
 
-    const res = await fetchAuth({ url: endPoint, revalidate: 1 });
+    const res = await fetchAuth({ url: endPoint, revalidate: 600 });
     totalPosts = String(res.headers?.get("X-WP-Total") || "0");
     // let ttp = Number(res.headers?.get("X-WP-Total") || "0");
     // if (ttp > 4) {

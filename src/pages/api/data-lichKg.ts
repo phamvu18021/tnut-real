@@ -17,7 +17,7 @@ export default async function handler(
   try {
     const responeWordpress = await fetchAuth({
       url: `${api_url}/posts?slug=lich-khai-giang`,
-      revalidate: 10
+      revalidate: 600
     });
     const data: any[] = await responeWordpress.json();
 

@@ -22,7 +22,7 @@ export default async function handler(
   try {
     const responeWordpress = await fetchAuth({
       url: `${api_url}/form`,
-      revalidate: 1
+      revalidate: 600
     });
     const data: any[] = await responeWordpress.json();
     const htmlString = data?.length > 0 ? data[0]?.acf?.[String(type)] : "";

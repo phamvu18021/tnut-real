@@ -21,7 +21,7 @@ export default async function handler(
     const endPoint = `${api_url}/${type}`;
 
     const res = await fetch(endPoint, {
-      next: { revalidate: 1 }
+      next: { revalidate: 600 }
     });
 
     posts = (await res?.json()) || [];

@@ -190,6 +190,7 @@ const comonForm = ({
   let odoo_utm = th_get_cookie();
   let referrer = document.referrer || window.location.origin;
   f.setAttribute("src", url + "?referrer=" + referrer + odoo_utm);
+  f.title = "form-main";
   f.style.width = size?.width || "100%";
   f.style.minHeight = size?.height || "450px";
   f.classList.add("formio_form_embed");

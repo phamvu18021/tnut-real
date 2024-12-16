@@ -64,6 +64,7 @@ export const BtnZalo = (props: IconButtonProps) => {
         as={"a"}
         href={"https://zalo.me/0815674848"}
         {...props}
+        aria-label="zalo"
       />
     </Tooltip>
   );
@@ -82,6 +83,7 @@ export const BtnMailN = (props: IconButtonProps) => {
         as={"a"}
         href={"mailto: hotro.tnut.edu.vn@gmail.com"}
         {...props}
+        aria-label="main-mail"
       />
     </Tooltip>
   );

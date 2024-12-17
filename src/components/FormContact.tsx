@@ -296,7 +296,7 @@ export const FormMain = ({
         </Heading>
       )}
 
-      {isLoading && <Loading he={"600px"} />}
+      {isLoading && <Loading he={"500px"} />}
       {!isLoading && (
         <div id={embed.divId} title="form-main" className={embed.divClass} />
       )}

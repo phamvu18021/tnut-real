@@ -202,7 +202,6 @@ export const BtnEmail = ({
             color={"white"}
             bg={"orange.500"}
             p={"8px"}
-            aria-hidden="true" // Ẩn biểu tượng này khỏi trình đọc màn hình
             aria-label="Mở form tư vấn" // Mô tả ngữ nghĩa cho người dùng
           />
           <Text pr={2} color={"white"}>

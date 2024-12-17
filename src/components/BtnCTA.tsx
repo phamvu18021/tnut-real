@@ -20,6 +20,7 @@ import { BsMessenger } from "react-icons/bs";
 import { MdEmail, MdOutlineMail } from "react-icons/md";
 import { SiZalo } from "react-icons/si";
 import { FormMain } from "./FormContact";
+import { Suspense } from "react";
 
 export const BtnPhone = ({
   link,
@@ -184,12 +185,15 @@ export const BtnEmail = ({
     <Popover placement="left" trigger="hover">
       <PopoverTrigger>
         <HStack
+          as="button" // Đặt phần tử này là nút tương tác
+          role="button" // ARIA role phù hợp
           spacing={0}
           borderRadius={0}
           bg={"orange.500"}
           transform={"rotate(270deg)"}
+          aria-haspopup="dialog" // Xác định rằng popover này mở một dialog
+          aria-expanded="false" // Bắt đầu ở trạng thái đóng
           cursor={"pointer"}
-          aria-label="email"
         >
           <IconButton
             icon={<MdEmail />}
@@ -198,7 +202,8 @@ export const BtnEmail = ({
             color={"white"}
             bg={"orange.500"}
             p={"8px"}
-            aria-label="email"
+            aria-hidden="true" // Ẩn biểu tượng này khỏi trình đọc màn hình
+            aria-label="Mở form tư vấn" // Mô tả ngữ nghĩa cho người dùng
           />
           <Text pr={2} color={"white"}>
             {label || "Tư vấn ngay"}
@@ -212,7 +217,9 @@ export const BtnEmail = ({
           Để lại thông tin
         </PopoverHeader>
         <PopoverBody>
-          <FormMain />
+          <Suspense fallback={<div>Loading...</div>}>
+            <FormMain />
+          </Suspense>
         </PopoverBody>
       </PopoverContent>
     </Popover>
